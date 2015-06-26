@@ -3,7 +3,6 @@
 import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
-
 features_train, labels_train, features_test, labels_test = makeTerrainData()
 
 
@@ -32,10 +31,20 @@ plt.show()
 ### visualization code (prettyPicture) to show you the decision boundary
 
 
+### importing random forest classfier and accuracy
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 
 
+### declare, train and predict classifier
+clf = RandomForestClassifier(n_estimators = 5, min_samples_split = 30, random_state = 90)
+clf.fit(features_train,labels_train)
+pred = clf.predict(features_test)
 
 
+### print accuracy
+acc = accuracy_score(labels_test,pred)
+print acc
 
 
 try:
